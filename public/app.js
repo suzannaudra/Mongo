@@ -1,13 +1,42 @@
+
+//Click function for "scrape" button
+$(document).on("click", ".savebutton", function() {
+  $.ajax({
+      method: "PUT",
+      url: "/saved/" + $(this).attr("data-id")
+  }).then(function(data) {
+      console.log(data)
+      window.location = "/"
+    })
+});
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
+
+
+ $(document).on("click","#scrapenew", function() {
+  $.ajax({
+        method: "GET",
+        url: "/scrape",
+    }).then(function(data) {
+        console.log(data)
+        window.location = "/"
+      })
+  });
+ 
+  $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    // Display the information on the page
+    //create div
+    //add p tag
+    //add button
+    //then add div to articles
+    const article = $('<div>')
+    article.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+    article.append('<button type="button" class="savebutton" class="btn btn-success save" data-id="' + data[i]._id + '">Save Article</button>')
+    article.append('<button type="button" class="savebutton" class="btn btn-success save" data-id="' + data[i]._id + '">Delete Article</button>')
+    $("#articles").append(article)
   }
 });
-
-
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
   // Empty the notes from the note section
@@ -22,7 +51,7 @@ $(document).on("click", "p", function() {
   })
     // With that done, add the note information to the page
     .then(function(data) {
-      console.log(data);
+      
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
@@ -70,3 +99,12 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+
+$.getJSON("/saved", function(data) {
+    // Display the information on the page
+    const savedarticle = $('<div>')
+    savedarticle.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+    savedarticle.append(data[i]._id )
+    $("#articles").append(savedarticle)
+  }
+);
