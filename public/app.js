@@ -33,7 +33,7 @@ $(document).on("click", ".savebutton", function() {
     const article = $('<div>')
     article.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
     article.append('<button type="button" class="savebutton" class="btn btn-success save" data-id="' + data[i]._id + '">Save Article</button>')
-    article.append('<button type="button" class="savebutton" class="btn btn-success save" data-id="' + data[i]._id + '">Delete Article</button>')
+    article.append('<button type="button" class="deletebtn" class="btn btn-success save" data-id="' + data[i]._id + '">Delete Article</button>')
     $("#articles").append(article)
   }
 });
@@ -100,7 +100,7 @@ $(document).on("click", "#savenote", function() {
   $("#bodyinput").val("");
 });
 
-$.getJSON("/saved", function(data) {
+$.getJSON("/saved/", function(data) {
     // Display the information on the page
     const savedarticle = $('<div>')
     savedarticle.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
@@ -108,3 +108,4 @@ $.getJSON("/saved", function(data) {
     $("#articles").append(savedarticle)
   }
 );
+

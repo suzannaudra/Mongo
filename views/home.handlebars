@@ -1,16 +1,26 @@
 <style>
   .wrapper {
     display:flex;
+    width: fit-content;
   }
   #notes {
     background: green;
     width: 600px;
   }
+  #gotosaved{
+    display: inline;
+    align-content: center;
+    align-self: right;
+    width: fit-content;
+  }
 </style>
-<<<<<<< HEAD
 
 <div class="wrapper">
-  <div><button class="scrapenew" id="scrapenew">SCRAPE NEW ARITCLES</button></div>
+  <div><button class="scrapenew" id="scrapenew">SCRAPE NEW ARITCLES</button>
+  <button  class="gotosaved" id="gotosaved" onclick="window.location.href='/saved/'">Go to Saved Articles</button>
+  <br>
+  <br>
+</div>
   <div id="articles"></div><div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -20,9 +30,4 @@
 </div>
   <div id="notes"></div>
   </div>
-=======
-<div class="wrapper">
-  <div id="articles"></div>
-  <div id="notes"></div>
-  </div>
->>>>>>> 057bc31783f7593e0065f7be332e76dab30bc678
+</div> 
