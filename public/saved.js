@@ -1,14 +1,15 @@
+//Not working on front end
 $(document).on("click",".deletebtn", function() {
   $.ajax({
         method: "DELETE",
-        url: "/saved/"+ $(this).attr("data-id")
+        url: "/articles"+ $(this).attr("data-id")
     }).then(function(data) {
         console.log(data)
         window.location = "/"
       })
   });
 
-$.getJSON("/saved/", function(data) {
+$.getJSON("/articles", function(data) {
   // Remove the information on the page
   //not working
   const deletearticle = $('<div>')

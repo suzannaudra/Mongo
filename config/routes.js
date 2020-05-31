@@ -7,7 +7,7 @@ const mainRouter = require('express').Router();
     res.render("home");
   });
   //This route renders the handlebars page
-  mainRouter.get("/saved", function(req,res) {
+  mainRouter.get("/saved/", function(req,res) {
     res.render("saved");
   });
   mainRouter.get("/articles", function(req,res) {
