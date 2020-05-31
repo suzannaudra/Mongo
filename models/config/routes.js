@@ -17,5 +17,12 @@ const mainRouter = require('express').Router();
     db.Article.find({}).then(results => res.json (results.reverse()))
   });
 
+  // mainRouter.delete("/articles/:id", function (req,res){
+  //   let query = {};
+  //   query._id = req.params.id;
+  //   db.Article.findByIdAndDelete(query, function(err, data) {
+  //     res.json(data)
+  //   })
+  // })
   module.exports  = mainRouter;
 
