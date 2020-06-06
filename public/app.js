@@ -32,8 +32,11 @@ $(document).on("click", ".savebutton", function() {
     //then add div to articles
     const article = $('<div>')
     article.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
-    article.append('<button type="button" class="savebutton" class="btn btn-success save" data-id="' + data[i]._id + '">Save Article</button>')
-    article.append('<button type="button" class="deletebtn" class="btn btn-success save" data-id="' + data[i]._id + '">Delete Article</button>')
+    article.append('<button type="button" class="savebutton btn btn-success save" data-id="' + data[i]._id + '">Save Article</button>')
+    article.append('<button type="button" class="deletebtn btn btn-success save" data-id="' + data[i]._id + '">Delete Article</button>')
+    if(data[i].saved){
+    article.find('.savebutton').attr('disabled', true);
+    }
     $("#articles").append(article)
   }
 });
@@ -100,12 +103,5 @@ $(document).on("click", "#savenote", function() {
   $("#bodyinput").val("");
 });
 
-$.getJSON("/saved/", function(data) {
-    // Display the information on the page
-    const savedarticle = $('<div>')
-    savedarticle.append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
-    savedarticle.append(data[i]._id )
-    $("#articles").append(savedarticle)
-  }
-);
+
 

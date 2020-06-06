@@ -8,10 +8,7 @@ const mainRouter = require('express').Router();
     res.render("home");
   });
 //});
-  //This route renders the handlebars page
-  mainRouter.get("/saved", function(req,res) {
-    res.render("saved");
-  });
+
   
   mainRouter.get("/articles", function(req,res) {
     db.Article.find({}).then(results => res.json (results.reverse()))
@@ -24,5 +21,6 @@ const mainRouter = require('express').Router();
   //     res.json(data)
   //   })
   // })
+
   module.exports  = mainRouter;
 

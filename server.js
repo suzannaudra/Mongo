@@ -2,12 +2,14 @@ var express = require("express");
 var logger = require("morgan");
 var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
+const Handlebars = require('handlebars');
 const mainRouter = require('./models/config/routes');
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 // Require all models
 var db = require("./models");
@@ -29,7 +31,8 @@ app.use(express.static("public"));
 
   
 app.engine("handlebars", expressHandlebars({
-  defaultLayout: "main"
+  defaultLayout: "main",
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set("view engine", "handlebars");
 
@@ -95,12 +98,15 @@ app.get("/articles", function(req, res) {
 });
 // Displays specified saved articles
 app.get("/saved", function(req, res) {
-  db.Article.find({"saved": true})
-      .populate("notes")
+  db.Article.find({saved: true})
       .then(function(result){
-      var hbsObject = { articles: result };
+        console.log(result.length)
+      var hbsObject = { articles: result, noArticles: result.length === 0 };
+        console.log(hbsObject);
       res.render("saved",hbsObject);
-  }).catch(function(err){ res.json(err) });
+  }).catch(function(err){ 
+    console.log(err)
+    res.status(404).json({error: err.toString()}) });
 });
 
 // Posts saved articles 
