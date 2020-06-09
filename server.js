@@ -59,7 +59,7 @@ app.get("/scrape", function(req, res) {
         .text()||" "; 
       result.link = $(this)
         .children("a")
-        .attr("href");
+        .attr("href")||" ";
       result.summary = $(this)
         .find("p")
         .text()||" "; 
