@@ -97,17 +97,17 @@ app.get("/articles", function(req, res) {
     });
 });
 // Displays specified saved articles
-// app.get("/saved", function(req, res) {
-//   db.Article.find({saved: true})
-//       .then(function(result){
-//         console.log(result.length)
-//       var hbsObject = { articles: result, noArticles: result.length === 0 };
-//         console.log(hbsObject);
-//       res.render("saved",hbsObject);
-//   }).catch(function(err){ 
-//     console.log(err)
-//     res.status(404).json({error: err.toString()}) });
-// });
+app.get("/saved", function(req, res) {
+  db.Article.find({saved: true})
+      .then(function(result){
+        console.log(result.length)
+      var hbsObject = { articles: result, noArticles: result.length === 0 };
+        console.log(hbsObject);
+      res.render("saved",hbsObject);
+  }).catch(function(err){ 
+    console.log(err)
+    res.status(404).json({error: err.toString()}) });
+});
 
 // Posts saved articles 
 app.put("/saved/:id", function(req, res) {
