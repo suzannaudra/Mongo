@@ -48,12 +48,12 @@ $(document).on("click", "p", function() {
   var thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
-  $.ajax({
-    method: "GET",
-    url: "/articles/" + thisId
-  })
-    // With that done, add the note information to the page
-    .then(function(data) {
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/articles/" + thisId
+  // })
+  //   // With that done, add the note information to the page
+  //   .then(function(data) {
       
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
