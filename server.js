@@ -110,12 +110,12 @@ app.get("/saved", function(req, res) {
 });
 
 // Posts saved articles 
-app.put("/saved/:id", function(req, res) {
-  db.Article.findOneAndUpdate({"_id": req.params.id}, {"$set": {"saved": true}})
-  .then(function(result) {
-      res.json(result);
-  }).catch(function(err){ res.json(err) });
-})
+// app.put("/saved/:id", function(req, res) {
+//   db.Article.findOneAndUpdate({"_id": req.params.id}, {"$set": {"saved": true}})
+//   .then(function(result) {
+//       res.json(result);
+//   }).catch(function(err){ res.json(err) });
+// })
 
 // Deletes specific articles from "Saved Articles" and puts them back on the homepage
 app.post("/delete/:id", function(req, res){

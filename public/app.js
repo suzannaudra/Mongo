@@ -1,14 +1,14 @@
 
 //Click function for "scrape" button
-// $(document).on("click", ".savebutton", function() {
-//   $.ajax({
-//       method: "PUT",
-//       url: "/saved/" + $(this).attr("data-id")
-//   }).then(function(data) {
-//       console.log(data)
-//       window.location = "/"
-//     })
-// });
+$(document).on("click", ".savebutton", function() {
+  $.ajax({
+      method: "PUT",
+      url: "/saved/" + $(this).attr("data-id")
+  }).then(function(data) {
+      console.log(data)
+      window.location = "/"
+    })
+});
 // Grab the articles as a json
 
 
