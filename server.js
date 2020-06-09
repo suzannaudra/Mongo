@@ -37,7 +37,7 @@ app.engine("handlebars", expressHandlebars({
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect(PROCESS.env.MONGODB_URI ||"mongodb://localhost/testdb" { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/testdb", { useNewUrlParser: true });
 
 // Routes
 app.use(mainRouter);
